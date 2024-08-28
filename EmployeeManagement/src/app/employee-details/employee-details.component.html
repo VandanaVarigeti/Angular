@@ -1,0 +1,23 @@
+<div id="openingDiv" *ngIf="employee">
+    <h2 id="h2Details">{{employee.name}} Details</h2>
+      <table border="1px solid black" id="tabledetails"class="employee" color="black">
+        <tr id="trID">
+          <td id="tdID">ID: </td><td><label id="id">{{employee.id}}</label></td>
+        </tr>
+        <tr id="trName">
+          <td id="tdName">Name: </td><td><label id="name">{{employee.name}}</label></td>
+        </tr>
+        <tr id="trLoc">
+          <td id="tdLoc">Location: </td><td><label id="location">{{employee.location}}</label></td>
+        </tr>
+        <tr id="tdEmail">
+          <td id="tdEmail">Email: </td><td><label id="email">{{employee.email}}</label></td>
+        </tr>
+        <tr id="trMobile">
+          <td id="tdMobile">Mobile: </td><td><label id="mobile">{{employee.mobile}}</label></td>
+        </tr>
+      </table>
+    <br id="br8">
+    <button id="back" (click)="goBack()">Back</button>
+  </div>
+  

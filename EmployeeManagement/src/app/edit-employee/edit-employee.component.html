@@ -1,0 +1,58 @@
+<div id="editdivOpening">
+    <h1 id="h1Edit">Edit Employee</h1>
+    <fieldset id="fieldsetEdit">
+    <form #editEmpForm="ngForm" (ngSubmit)="onSubmit()">
+
+        
+        <label id="nameLabelEdit">
+        Name: <input [(ngModel)]="employee.name" name="empName" #nameField="ngModel" id="name" pattern="[A-Za-z]{3,}" required></label><br id="br16"/>
+
+        <div id="divErrorname" [hidden] ="!(nameField.invalid && (nameField.dirty || nameField.touched))">
+            <div id="divErrorNameIf1" *ngIf="nameField.errors?.required">
+                Name field cannot be blank
+            </div>
+            <div id="divErrorNameIf2" *ngIf="nameField.errors?.pattern && nameField.touched">
+                Name field must contain at least 3 signs
+            </div>
+        </div>
+        <div id="openingDIVLoc">
+        <label id="labelLocEdit">Location: <select [(ngModel)]="employee.location" name="empLocation" #locationField="ngModel" id="location" required="">
+            <option id="LocationEditOption" *ngFor="let location of locationList">{{location}}</option>
+                </select></label>
+        </div>
+        <label id="labelEmialEdit"><div id="divEmailEdit">
+                 
+                Email: <input [(ngModel)]="employee.email" name="empEmail" #emailField="ngModel" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required><br id="br18"/>
+        </div></label>
+         
+                <div id="ErrorEmailEditDiv1" [hidden] = "!(emailField.invalid && (emailField.dirty || emailField.touched))">
+                    <div id="ErrorEmailEditIf1" *ngIf="emailField.errors?.required">
+                        Email field cannot be blank
+                    </div>
+                    <div id="ErrorEmailEditIf2" *ngIf="emailField.errors?.pattern && emailField.touched">
+                        This email address is invalid
+                    </div>
+                </div>
+
+                              <br id="br19">
+              
+        <label id="labelMobileEdit"><div id="divMobileEdit">
+        Mobile: <input [(ngModel)]="employee.mobile" name="empMobile" #mobileField="ngModel" id="mobile" pattern="[0-9]{10}" required>
+        </div></label><br id="br20"/>
+
+       
+        <div id="divErrorMobile"[hidden]="!(mobileField.invalid && (mobileField.dirty || mobileField.touched))">
+            <div id="ErorEditMobileIf1" *ngIf="mobileField.errors?.required">
+                Mobile field cannot be blank
+            </div>
+            <div id="ErorEditMobileIf1" *ngIf="mobileField.errors?.pattern && mobileField.touched">
+                Mobile number - only 10 digits allowed
+            </div>
+        </div><button id="update" type="submit" [disabled]="!editEmpForm.form.valid" (click)="updateEmployee()" routerLink="/employeeList">Update</button>
+
+
+    </form>
+    </fieldset>
+</div>
+
+

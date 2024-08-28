@@ -1,0 +1,10 @@
+<title id="title"> {{title}} </title>
+<fieldset id="fieldset">
+  <h1 id="h1"><a id="a" (click)="resetTitle()" routerLink="/"> {{title}} </a></h1>
+  <ul id="ul">
+    <li id="li1"><a id="a1" routerLink="/employeeList" id="EmployeesListMenu">Employees list</a></li>
+    <li id="li2"><a routerLink="/addEmployee" id="AddEmployee">Add Employee</a></li>
+  </ul>
+</fieldset>
+<br id="br1"><br id="br2">
+<router-outlet id="routerOutlet"></router-outlet>

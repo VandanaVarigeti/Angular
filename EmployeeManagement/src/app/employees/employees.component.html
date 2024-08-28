@@ -1,0 +1,35 @@
+<h1 id="h1" align="center"><b>Employees List</b></h1>
+<br id="br1">
+<br id="br2">
+
+<div id="div1">
+  Filter by: <br id="br3">
+  <input type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Search by name">
+</div>
+
+<br id="br4">
+<div id="div2">
+  <label #count id="count">Total number of employees: {{(employees|employeeFilter:searchText).length}}</label>
+</div>
+<br id="br5"><br id="br6">
+<table id="table" class="employees" style="border-collapse: collapse; border: 1px solid black;">
+  <tr id="tableHeader" style="border: 1px solid black;">
+    <th id="thId" style="border: 1px solid black;">Employee ID</th>
+    <th id="thName" style="border: 1px solid black;">Name</th>
+    <th id="thLocation" style="border: 1px solid black;">Location</th>
+    <th id="thEmail" style="border: 1px solid black;">Email</th>
+    <th id="thMobile" style="border: 1px solid black;">Mobile</th>
+    <th id="thEdit" style="border: 1px solid black;">Edit</th>
+    <th id="thDelete" style="border: 1px solid black;">Delete</th>
+  </tr>
+  <tr id="tablerow{{employee.id}}" *ngFor="let employee of employees | employeeFilter: searchText as res" style="border: 1px solid black;">
+    <td id="firstTD" style="border: 1px solid black;">
+      <span id="spanWithin" class="badge"><a routerLink="/detail/{{employee.id}}" style="border: none;">{{employee.id}}</a></span></td>
+    <td id="name{{employee.id}}" style="border: 1px solid black;">{{employee.name}}</td>
+    <td id="location{{employee.id}}" style="border: 1px solid black;">{{employee.location}}</td>
+    <td id="email{{employee.id}}" style="border: 1px solid black;">{{employee.email}}</td>
+    <td id="mobile{{employee.id}}" style="border: 1px solid black;">{{employee.mobile}}</td>
+    <td id="tdupdate{{employee.id}}" style="border: 1px solid black;"><button id="edit{{employee.id}}" class="update" title="update employee" routerLink="/editEmployee/{{employee.id}}" style="border: none;">Edit {{employee.id}}</button></td>
+    <td id="tddelete{{employee.id}}" style="border: 1px solid black;"><button class="delete" title="delete employee" (click)="delete(employee)" style="border: none;">Delete {{employee.id}}</button></td>
+  </tr>
+</table>

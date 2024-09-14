@@ -1,0 +1,184 @@
+
+/* General Styles */
+html, body {
+    font-family: 'Roboto', sans-serif; /* Modern font */
+    background-color: #f4f4f9; /* Light background color for contrast */
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+ 
+/* Container */
+.container {
+    max-width: 500px; /* Further reduced max-width */
+    margin: 20px auto; /* Center align with margin */
+    padding: 10px; /* Reduced padding */
+    background: linear-gradient(145deg, #ffffff, #f0f0f5); /* Gradient background */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border: 1px solid #e0e0e0; /* Subtle border */
+}
+ 
+/* Header */
+h2 {
+    font-size: 20px; /* Further reduced font size for header */
+    margin-bottom: 8px; /* Reduced margin */
+    color: #333;
+    font-weight: bold;
+    text-align: center; /* Center-aligned header text */
+}
+h3 {
+    font-size: 20px; /* Further reduced font size for header */
+    margin-bottom: 8px; /* Reduced margin */
+    color: #333;
+    font-weight: bold;
+    text-align: center; /* Center-aligned header text */
+}
+ 
+/* Form */
+form {
+    display: flex;
+    flex-direction: column;
+}
+ 
+/* Form Group */
+.form-group {
+    margin-bottom: 10px; /* Further reduced margin */
+}
+ 
+.form-group label {
+    display: block;
+    font-weight: 400px; /* Slightly bolder font weight */
+    margin-bottom: 2px; /* Reduced margin */
+    color: #555;
+}
+ 
+.required {
+    color: #e74c3c; /* Color for required fields */
+}
+ 
+.optional {
+    color: #888; /* Color for optional fields */
+}
+ 
+input[type="text"],
+input[type="email"],
+select {
+    max-width: 100%;
+    width: 100%;
+    padding: 5px 8px; /* Reduced padding */
+    border: 1px solid #ddd;
+    border-radius: 4px; /* Slightly rounded corners */
+    box-sizing: border-box;
+    margin-bottom: 4px; /* Reduced margin */
+    height: auto; /* Auto height for flexibility */
+    line-height: 1.3; /* Adjusted line height */
+    font-size: 12px; /* Further reduced font size */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* Lighter shadow */
+    transition: box-shadow 0.2s ease; /* Smooth transition for shadow on focus */
+}
+ 
+input[type="text"]:focus,
+input[type="email"]:focus,
+select:focus {
+    border-color: #007bff; /* Change border color on focus */
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); /* Enhanced shadow on focus */
+    outline: none; /* Remove default outline */
+}
+ 
+/* Error Message */
+.error {
+    color: #e74c3c; /* Color for errors */
+    font-size: 11px; /* Smaller font size for error messages */
+    margin-top: 2px; /* Reduced margin */
+}
+ 
+/* Address Group */
+.address-group {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 8px; /* Reduced padding */
+    margin-bottom: 10px; /* Reduced margin */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Shadow for address group */
+    background-color: #fafafa; /* Subtle background color */
+}
+ 
+/* Address Group Title */
+.address-group h3 {
+    font-size: 14px; /* Further reduced font size for titles */
+    margin-top: 0;
+    color: #333;
+}
+ 
+/* Button Styles */
+button {
+    padding: 5px 10px; /* Reduced padding for smaller buttons */
+    ;
+    border: none;
+    border-radius: 4px; /* Slightly rounded corners */
+    color: #fff;
+    cursor: pointer;
+    font-size: 12px; /* Reduced font size for buttons */
+    margin-top: 8px; /* Reduced margin for tighter spacing */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Shadow for buttons */
+}
+
+ 
+.btn-primary {
+    background-color: #007bff;
+}
+ 
+.btn-primary:hover {
+    background-color: #0056b3;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Enhanced shadow on hover */
+}
+ 
+.btn-danger {
+    background-color: #dc3545;
+}
+ 
+.btn-danger:hover {
+    background-color: #c82333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+ 
+.btn-success {
+    background-color: #28a745;
+}
+ 
+.btn-success:hover {
+    background-color: #218838;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.wrapper {
+   min-height: 100vh; /* Ensure wrapper takes up at least the full viewport height */
+   display: flex;
+   flex-direction: column;
+}
+.content {
+    flex: 1; /* Allow content to expand and push footer down */
+}
+ 
+/* Footer */
+footer {
+    padding: 10px; /* Reduced padding for a more compact footer */
+    background-color: #343147;
+    color: #fff;
+    text-align: center;
+    margin-top: 20px;
+    border-radius: 0 0 8px 8px; /* Rounded corners for footer */
+}
+ 
+.footer-links {
+    margin-bottom: 10px;
+}
+ 
+footer p {
+    margin: 0;
+    font-size: 13px; /* Slightly reduced font size */
+}
+ 
+ 

@@ -1,0 +1,38 @@
+<div class="app-wrapper">
+<!-- Header -->
+<div class="header">
+   <div class="brand">
+      <img src="assets/logo.png" alt="Logo" class="logo" />
+    </div>
+<!-- User image with hover-triggered dropdown -->
+<div class="user-menu" (mouseenter)="showDropdown()" (mouseleave)="hideDropdown()">
+   <img
+         src="assets/image.png"
+         alt="Image"
+         class="user-image"
+      />
+   <!-- Dropdown menu -->
+   <div class="dropdown" [class.show]="dropdownVisible">
+   <div class="dropdown-content">
+   <a href="/update" (click)="onUpdateProfile()">Update Profile</a>
+   <a href="/login" (click)="onLogout()">Logout</a>
+   </div>
+   </div>
+   </div>
+   </div>
+   <!-- Main content area -->
+   <div class="main-content">
+   <p class="welcome-message">Welcome back</p>
+   <p class="about-description">
+      CHARLES SCHWAB is a leading financial services provider, offering a wide range of investment products and services.
+   </p>
+   <button class="buy-button" (click)="goToProduct()">Open Your Account Now</button>
+   </div>
+   <!-- Footer -->
+  <footer>
+   <div class="footer-links">
+     <!-- You can add links here if needed -->
+   </div>
+   <p>&copy; 2024 Charles Schwab & Co., Inc, All rights reserved. Member SIPC. Unauthorized access is prohibited. Usage will be monitored. (0124-3J4J)</p>
+ </footer>
+   </div>

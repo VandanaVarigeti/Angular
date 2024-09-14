@@ -1,0 +1,48 @@
+<div class="container">
+    <h1>Account Setup</h1>
+    <form id="account-setup-form">
+        <fieldset>
+            <legend>Additional Details</legend>
+            <label>Source of Funds:</label>
+            <div>
+                <input type="checkbox" id="salary" name="source-of-funds" value="salary">
+                <label for="salary">Salary</label>
+                <input type="checkbox" id="business" name="source-of-funds" value="business">
+                <label for="business">Business</label>
+                <input type="checkbox" id="inheritance" name="source-of-funds" value="inheritance">
+                <label for="inheritance">Family Inheritance</label>
+                <input type="checkbox" id="other" name="source-of-funds" value="other">
+                <label for="other">Others</label>
+            </div>
+            <label>Purpose of Account:</label>
+            <div>
+                <input type="checkbox" id="general" name="purpose-of-account" value="general">
+                <label for="general">General Investing</label>
+                <input type="checkbox" id="retirement" name="purpose-of-account" value="retirement">
+                <label for="retirement">Investing for Retirement</label>
+                <input type="checkbox" id="estate" name="purpose-of-account" value="estate">
+                <label for="estate">Investing for Estate Planning</label>
+                <input type="checkbox" id="college" name="purpose-of-account" value="college">
+                <label for="college">Investing for College</label>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Account Features</legend>
+            <label>Trading Type:</label>
+            <div>
+                <input type="checkbox" id="margin" name="trading-type" value="margin">
+                <label for="margin">Margin Trading</label>
+                <input type="checkbox" id="options" name="trading-type" value="options">
+                <label for="options">Options Trading</label>
+                <input type="checkbox" id="futures" name="trading-type" value="futures">
+                <label for="futures">Futures Trading</label>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Consent</legend>
+            <label for="consent">I verify that the provided information is correct:</label>
+            <input type="checkbox" id="consent" name="consent" required>
+        </fieldset>
+        <button type="submit">Submit</button>
+    </form>
+</div>

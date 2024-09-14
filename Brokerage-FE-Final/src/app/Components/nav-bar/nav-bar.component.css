@@ -1,0 +1,36 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #343147;
+  ;
+  padding: 0.2rem;
+  
+}
+.navbar-logo {
+  width: 55px; /* Adjust size as needed */
+  height: 55px;
+  margin-left: 20px;
+  /* margin-right: 10px; Space between logo and text */
+}
+.navbar-brand a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+
+.navbar-links a,
+.navbar-links button {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.navbar-links a:hover,
+.navbar-links button:hover {
+  text-decoration: underline;
+}

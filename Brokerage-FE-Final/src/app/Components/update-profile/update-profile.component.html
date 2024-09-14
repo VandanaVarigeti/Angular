@@ -1,0 +1,217 @@
+
+<app-nav-bar></app-nav-bar>
+ 
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <h1>Profile Update</h1>
+  <!-- Personal Information -->
+  <div class="form-group">
+       <label for="ssnNumber">SSN Number <span class="required">*</span></label>
+       <input id="ssnNumber" formControlName="ssnNumber" type="number" />
+       <div class="error" *ngIf="profileForm.get('ssnNumber')?.invalid && profileForm.get('ssnNumber')?.touched">SSN Number is required(Only Alphabets allowed).</div>
+       </div>
+  <div  class="form-group">
+  <label for="firstName">First Name<span class="required">*</span></label>
+  <input id="firstName" formControlName="firstName"  type="text" />
+   <div class="error" *ngIf="profileForm.get('firstName')?.invalid && profileForm.get('firstName')?.touched">First Name is required(Only Alphabets allowed).</div>
+  </div> 
+  <div  class="form-group">
+  <label for="middleName">Middle Name<span class="optional">(Optional)</span></label>
+  <input id="middleName" formControlName="middleName" type="text" />
+  </div>
+  <div  class="form-group">
+  <label for="lastName">Last Name<span class="required">*</span></label>
+  <input id="lastName" formControlName="lastName" type="text" />
+  <div class="error" *ngIf="profileForm.get('lastName')?.invalid && profileForm.get('lastName')?.touched">Last Name is required(Only Alphabets allowed).</div>
+  </div>
+  <div  class="form-group">
+  <label for="title">Title <span class="optional">(Optional)</span></label>
+  <input id="title"  formControlName="title" type="text" />
+  </div>
+  <!-- Address 1 -->
+  <h3>Address 1</h3>
+  <div>
+  <label for="addressLine1">Address Line 1<span class="required">*</span></label>
+  <input id="addressLine1" formControlName="addressLine1" type="text" />
+  <div class="error" *ngIf="profileForm.get('addressLine1')?.invalid && profileForm.get('addressLine1')?.touched">Address Line 1 is required.</div>
+  </div>
+  <div>
+  <label for="addressLine2">Address Line 2<span class="required">*</span></label>
+  <input id="addressLine2" formControlName="addressLine2"  type="text" />
+  <div class="error" *ngIf="profileForm.get('addressLine2')?.invalid && profileForm.get('addressLine2')?.touched">Address Line 2 is required.</div>
+  </div>
+  <div>
+  <label for="city">City<span class="required">*</span></label>
+  <input id="city" formControlName="city" type="text" />
+  <div class="error" *ngIf="profileForm.get('city')?.invalid && profileForm.get('city')?.touched">City is required.</div>
+  </div>
+  <div>
+  <label for="state">State <span class="required">*</span></label>
+  <select  id="state" formControlName="state">
+  <option value="" disabled>Select State</option>
+ <option *ngFor="let state of usStates" [value]="state">{{ state }}</option>
+</select>
+<div class="error" *ngIf="profileForm.get('state')?.invalid && profileForm.get('state')?.touched">State is required.</div>
+  </div>
+  <div>
+  <label for="country">Country<span class="required">*</span></label>
+  <input id="country" formControlName="country"  type="text" />
+  <div class="error" *ngIf="profileForm.get('country')?.invalid && profileForm.get('country')?.touched">country is required.</div>
+  </div>
+  <div>
+  <label for="zipCode">Zip Code<span  class="required">*</span></label>
+  <input id="zipCode" formControlName="zipCode"  type="text" />
+  <div class="error" *ngIf="profileForm.get('zipCode')?.invalid && profileForm.get('zipCode')?.touched">ZIP Code must be a 5-digit number.</div>
+  </div>
+  <!-- Address 2 -->
+  <h3>Address 2</h3>
+  <div>
+  <label for="address2Line1">Address Line 1<span class="optional">(Optional)</span></label>
+  <input id="address2Line1" formControlName="address2Line1"  type="text" />
+  <div class="error" *ngIf="profileForm.get('address2Line1')?.invalid && profileForm.get('address2Line1')?.touched"></div>
+  </div>
+  <div>
+  <label for="address2Line2">Address Line 2<span class="optional">(Optional)</span></label>
+  <input id="address2Line2" formControlName="address2Line2" type="text">
+  <div class="error" *ngIf="profileForm.get('address2Line2')?.invalid && profileForm.get('address2Line2')?.touched"></div>
+  </div>
+  <div>
+  <label for="city2">City<span class="optional">(Optional)</span></label>
+  <input id="city2" formControlName="city2" type="text">
+  <div class="error" *ngIf="profileForm.get('city2')?.invalid && profileForm.get('city2')?.touched"></div>
+  </div>
+  <div>
+  <label for="state2">State<span class="optional">(Optional)</span></label>
+  <input id="state2" formControlName="state2" type="text">
+  <div class="error" *ngIf="profileForm.get('state2')?.invalid && profileForm.get('state2')?.touched"></div>
+  </div>
+  <div>
+  <label for="country2">Country<span class="optional">(Optional)</span></label>
+  <input id="country2" formControlName="country2" type="text">
+  <div class="error" *ngIf="profileForm.get('country2')?.invalid && profileForm.get('country2')?.touched"></div>
+  </div>
+  <div>
+  <label for="zipCode2">Zip Code<span class="optional">(Optional)</span></label>
+  <input id="zipCode2" formControlName="zipCode2" type="text">
+  <div class="error" *ngIf="profileForm.get('zipCode2')?.invalid && profileForm.get('zipCode2')?.touched"></div>
+  </div>
+  <div>
+  <label for="internationalAddressIndicator2">
+  <input type="checkbox" id="internationalAddressIndicator2" formControlName="internationalAddressIndicator2">
+       International Address
+  </label>
+  </div>
+  <!-- Address 3 -->
+  <h3>Address 3</h3>
+  <div>
+  <label for="address3Line1">Address Line 1<span class="optional">(Optional)</span></label>
+  <input id="address3Line1" formControlName="address3Line1"  type="text">
+  <div class="error" *ngIf="profileForm.get('address3Line1')?.invalid && profileForm.get('address3Line1')?.touched"></div>
+  </div>
+  <div>
+  <label for="address3Line2">Address Line 2<span class="optional">(Optional)</span></label>
+  <input id="address3Line2" formControlName="address3Line2" type="text">
+  <div class="error" *ngIf="profileForm.get('address3Line2')?.invalid && profileForm.get('address3Line2')?.touched"></div>
+  </div>
+  <div>
+  <label for="city3">City<span class="optional">(Optional)</span></label>
+  <input id="city3" formControlName="city3" type="text">
+  <div class="error" *ngIf="profileForm.get('city3')?.invalid && profileForm.get('city3')?.touched"></div>
+  </div>
+  <div>
+  <label for="state3">State<span class="optional">(Optional)</span></label>
+  <input id="state3" formControlName="state3" type="text">
+  <div class="error" *ngIf="profileForm.get('state3')?.invalid && profileForm.get('state3')?.touched"></div>
+  </div>
+  <div>
+  <label for="country3">Country<span class="optional">(Optional)</span></label>
+  <input id="country3" formControlName="country3" type="text">
+  <div class="error" *ngIf="profileForm.get('country3')?.invalid && profileForm.get('country3')?.touched"></div>
+  </div>
+  <div>
+  <label for="zipCode3">Zip Code<span class="optional">(Optional)</span></label>
+  <input id="zipCode3" formControlName="zipCode3" type="text">
+  <div class="error" *ngIf="profileForm.get('zipCode3')?.invalid && profileForm.get('zipCode3')?.touched"></div>
+  </div>
+  <div>
+  <label for="internationalAddressIndicator3">
+  <input type="checkbox" id="internationalAddressIndicator3" formControlName="internationalAddressIndicator3">
+       International Address
+  </label>
+  </div>
+  <!-- Other Information -->
+  <h3>Other Information</h3>
+  <!-- <div>
+  <label for="phoneNumberType">Phone Number Type <span class="required">*</span></label>
+  <select id="phoneNumberType" formControlName="phoneNumberType">
+  <option value="" disabled>Select Type</option>
+  <option value="mobile">Mobile</option>
+  <option value="landline">Landline</option>
+  </select>
+  <div class="error" *ngIf="profileForm.get('phoneNumberType')?.invalid && profileForm.get('phoneNumberType')?.touched">Phone Number Type is required.</div>
+  </div> -->
+  <div  class="form-group">
+  <label for="phoneNumber">Phone Number<span class="required">*</span></label>
+  <input id="phoneNumber" formControlName="phoneNumber" type="text" />
+  <div class="error" *ngIf="profileForm.get('phoneNumber')?.hasError('invalidPhoneNumber') && profileForm.get('phoneNumber')?.touched">Phone Number must be a valid US number.</div>
+  </div>
+  <!-- <div  class="form-group">
+  <label for="landlineNumber">Landline Number <span class="optional">(Optional)</span></label>
+  <input id="landlineNumber" formControlName="landlineNumber"  type="text" />
+  <div class="error" *ngIf="profileForm.get('landlineNumber')?.hasError('invalidLandlineNumber') && profileForm.get('landlineNumber')?.touched">Landline Number must be an 8-digit number.</div>
+  </div> -->
+  <div class="form-group">
+  <label for="internationalPhoneNumber">International Phone Number<span class="optional">(Optional)</span></label>
+  <input id="internationalPhoneNumber" formControlName="internationalPhoneNumber">
+  
+  </div>
+  <div  class="form-group">
+  <label for="emailAddress">Email Address <span class="required">*</span></label>
+  <input id="emailAddress" formControlName="emailAddress"  type="email" />
+  <div class="error" *ngIf="profileForm.get('emailAddress')?.invalid && profileForm.get('emailAddress')?.touched">Valid Email Address is required.</div>
+  </div>
+  <div class="form-group">
+  <label for="citizenship1">Citizenship 1 <span class="required">*</span></label>
+  <input id="citizenship1" formControlName="citizenship1" type="text" class="form-control" value="US" readonly />
+  <div class="error" *ngIf="profileForm.get('citizenship1')?.invalid && profileForm.get('citizenship1')?.touched">Citizenship 1 is required.</div>
+  </div>
+  <div>
+  <label for="citizenship2">Citizenship 2<span class="optional">(Optional)</span></label>
+  <input id="citizenship2" formControlName="citizenship2" type="text" />
+  </div>
+  <div  class="form-group">
+  <label for="residentCountry">Resident Country <span class="required">*</span></label>
+  <input id="residentCountry" formControlName="residentCountry" type="text" />
+  <div class="error" *ngIf="profileForm.get('residentCountry')?.hasError('required')">Resident Country is required.</div>
+  <div class="error" *ngIf="!profileForm.get('residentCountry')?.hasError('required') && profileForm.get('residentCountry')?.hasError('restrictedCountry')">Resident Country cannot be Sudan or Iran.</div>
+  </div>
+  <!--div>
+       <label>
+       <input formControlName="politicallyInfluencedPerson"  type="checkbox" />
+       politically Influenced Person 
+       </label>
+       </div!-->
+  <div class="form-group">
+  <label for="politicallyInfluencedPerson">Politically Influenced Person<span class="required">*</span></label>
+  <select id="politicallyInfluencedPerson" formControlName="politicallyInfluencedPerson" required>
+  <option value="">Select</option>
+  <option value="yes">Yes</option>
+  <option value="no">No</option>
+  </select>
+  <div *ngIf="profileForm.get('politicallyInfluencedPerson')?.invalid && profileForm.get('politicallyInfluencedPerson')?.touched" class="error">Politically Influenced Person is required.</div>
+  </div>
+  <div class="form-group">
+  <label for="financialObjective">Financial Objective <span class="required">*</span></label>
+  <input id="financialObjective" formControlName="financialObjective" type="text" />
+  <div class="error" *ngIf="profileForm.get('financialObjective')?.invalid && profileForm.get('financialObjective')?.touched">Financial Objective is required.</div>
+  </div>
+  <button type="submit">Update Profile</button>
+  </form>
+
+
+<!-- Footer -->
+<footer>
+  <div class="footer-links">
+    <!-- You can add links here if needed -->
+  </div>
+  <p>&copy; 2024 Charles Schwab & Co., Inc, All rights reserved. Member SIPC. Unauthorized access is prohibited. Usage will be monitored. (0124-3J4J)</p>
+</footer>

@@ -1,0 +1,100 @@
+/* Global styles */
+body {
+    font-family: 'Roboto', sans-serif; /* Modern font */
+    margin: 0;
+    padding: 0;
+  }
+.container {
+    max-width: 500px; /* Further reduced max-width */
+    margin: 20px auto; /* Center align with margin */
+    padding: 10px; /* Reduced padding */
+    background: linear-gradient(145deg, #ffffff, #f0f0f5); /* Gradient background */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border: 1px solid #e0e0e0; /* Subtle border */
+}
+ 
+h3 {
+  font-size: 20px; /* Further reduced font size for header */
+  margin-bottom: 8px; /* Reduced margin */
+  color: #333;
+  font-weight: bold;
+  text-align: center;/* Smaller heading sizes */
+  }
+ 
+form div {
+    margin-bottom: 15px;
+}
+ 
+label {
+    display: block;
+    margin-bottom: 5px;
+    
+}
+ 
+select, input {
+    width: 100%;
+  padding: 4px; /* Further reduced padding inside inputs and selects */
+  border: 1px solid #ccc;
+  border-radius: 4px; /* Adjusted radius for a more compact look */
+  font-size: 0.875em; /* Smaller font size for form fields */
+  line-height: 1.2; /* Adjusted line height for reduced height */
+}
+ 
+input[type="submit"] {
+    width: auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+ 
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+ 
+form div div {
+    margin-top: 10px;
+}
+ 
+form div div label {
+    margin-top: 10px;
+}
+ 
+form div div input {
+    margin-bottom: 10px;
+}
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px; /* Reduced padding for buttons */
+    font-size: 14px; /* Smaller font size for buttons */
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  .btn-primary-new{
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px; /* Reduced padding for buttons */
+    font-size: 10px; /* Smaller font size for buttons */
+    border-radius: 4px;
+    cursor: pointer;
+  }
+footer {
+    background: #343147;
+    color: #fff;
+    padding: 8px 15px; /* Reduced padding for footer */
+    text-align: center;
+  }
+  
+  .footer-links {
+    margin-bottom: 8px; /* Reduced margin for footer links */
+  }

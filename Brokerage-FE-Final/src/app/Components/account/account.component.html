@@ -1,0 +1,172 @@
+<app-nav-bar></app-nav-bar>
+<div class="container">
+    <h3>Account Details</h3>
+    <form [formGroup]="accountForm" (submit)="onSubmit()">
+        <div>
+            <label for="productType">Account Product Type<span class="text-danger">*</span></label>
+            <select id="productType" formControlName="productType">
+                <option value="">Select</option>
+                <option value="SIMPL">SIMPLE</option>
+                <option value="RETIREMENT">RETIREMENT</option>
+            </select>
+        </div>
+        <!-- <div>
+            <label for="ssnNumber">SSN Number<span class="text-danger">*</span></label>
+            <input type="number" id="ssnNumber" name="ssnNumber" formControlName="ssnNumber">
+            <span *ngIf="!ssnNumber?.valid && (ssnNumber?.touched || ssnNumber?.dirty)">
+                <span class="text-danger" *ngIf="ssnNumber?.errors?.['required']">
+                    SSN Number is required
+                </span>
+            </span>
+        </div> -->
+        <div *ngIf="accountForm.get('productType')?.value === 'SIMPL'">
+            <label for="registrationType">Account Registration Type<span class="text-danger">*</span></label>
+            <select id="registrationType" formControlName="registrationType">
+                <option value="">Select</option>
+                <option value="INDIVIDUAL">INDIVIDUAL</option>
+                <option value="JOINT_TENANT">JOINT ACCOUNT</option>
+            </select>
+        </div>
+        <div *ngIf="accountForm.get('productType')?.value === 'RETIREMENT'">
+            <label for="registrationType">Account Registration Type<span class="text-danger">*</span></label>
+            <select id="registrationType" formControlName="registrationType">
+                <option value="">Select</option>
+                <option value="RETIREMENT_ACCOUNT">RETIREMENT ACCOUNT</option>
+            </select>
+        </div>
+        <div
+            *ngIf="(accountForm.get('productType')?.value === 'SIMPL') && (accountForm.get('registrationType')?.value === 'INDIVIDUAL')">
+            <label for="allowedRoles">Allowed Roles<span class="text-danger">*</span></label>
+            <select id="allowedRoles" formControlName="allowedRoles">
+                <option value="">Select</option>
+                <option value="INDIVIDUAL">INDIVIDUAL</option>
+            </select>
+        </div>
+        <div
+            *ngIf="(accountForm.get('productType')?.value === 'SIMPL') && (accountForm.get('registrationType')?.value === 'JOINT_TENANT')">
+            <label for="allowedRoles">Allowed Roles<span class="text-danger">*</span></label>
+            <select id="allowedRoles" formControlName="allowedRoles">
+                <option value="">Select</option>
+                <option value="JT">JOINT TENANT</option>
+            </select>
+ 
+        </div>
+        <div
+            *ngIf="(accountForm.get('productType')?.value === 'SIMPL') && (accountForm.get('registrationType')?.value === 'JOINT_TENANT') && (accountForm.get('allowedRoles')?.value === 'JT')">
+            <div *ngIf="tenantDetailsVisible">
+                <label>Tenant Details: <span class="text-danger">*</span></label>
+                <div formArrayName="jointTenant">
+                    <div *ngFor="let tenant of tenants.controls; let i = index" [formGroupName]="i">
+                        <label>TENANT {{i+1}}: <span class="text-danger">*</span></label><br>
+                        <label for="ssn">SSN:</label>
+                        <input id="ssn" formControlName="ssn" /><br>
+                        <label for="tenantName">NAME:</label>
+                        <input id="tenantName" formControlName="tenantName" />
+                    </div>
+                </div>
+ 
+            </div>
+        </div>
+        <div
+            *ngIf="(accountForm.get('productType')?.value === 'RETIREMENT') && (accountForm.get('registrationType')?.value === 'RETIREMENT_ACCOUNT')">
+            <label for="allowedRoles">Allowed Roles<span class="text-danger">*</span></label>
+            <select id="allowedRoles" formControlName="allowedRoles">
+                <option value="">Select</option>
+                <option value="INDIVIDUAL">INDIVIDUAL</option>
+                <option value="BENEFICIARY">BENEFICIARY</option>
+            </select>
+        </div>
+        <div
+            *ngIf="(accountForm.get('productType')?.value === 'RETIREMENT') && (accountForm.get('registrationType')?.value === 'RETIREMENT_ACCOUNT') && (accountForm.get('allowedRoles')?.value === 'BENEFICIARY')">
+            <div *ngIf="beneficiaryDetailsVisible">
+                <label>Beneficiary Details: <span class="text-danger">*</span></label>
+                <div formArrayName="beneficiaries">
+                    <div *ngFor="let beneficiary of beneficiaries.controls; let i = index" [formGroupName]="i">
+                        <label>Beneficiaries {{i+1}}: <span class="text-danger">*</span></label><br>
+                        <label for="name">Name:</label>
+                        <input id="name" formControlName="name" /><br>
+                        <label for="percentage">Percentage:</label>
+                        <input id="percentage" formControlName="percentage" type="number" /><br>
+                        <button type="button" class="btn btn-primary-new" (click)="clearBeneficiaryControls(i)">Remove</button>
+                    </div>
+                    <button type="button" class="btn btn-primary" (click)="addBeneficiaryControls()" [disabled]="beneficiaries.length >=4"> Add
+                        Beneficiaries</button>
+                </div>
+ 
+            </div>
+        </div>
+        <div>
+            <label for="accountNickName">Account Nickname <span class="text-danger">*</span></label>
+            <input type="text" id="accountNickName" name="accountNickName" formControlName="accountNickName">
+            <div *ngIf="!accountNickName?.valid && (accountNickName?.touched || accountNickName?.dirty)">
+                <div class="text-danger" *ngIf="accountNickName?.errors?.['required']">
+                    Account NickName is required
+                </div>
+            </div>
+        </div>
+        <div>
+            <label for="accountAddress">Account Address<span class="text-danger">*</span></label>
+            <input type="text" id="accountAddress" name="accountAddress" formControlName="accountAddress">
+            <span *ngIf="!accountaddress?.valid && (accountaddress?.touched || accountaddress?.dirty)">
+                <span class="text-danger" *ngIf="accountaddress?.errors?.['required']">
+                    Account Address is required
+                </span>
+            </span>
+        </div>
+        <div>
+            <label for="accountPhone">Account Phone<span class="text-danger">*</span></label>
+            <input type="text" id="accountPhone" name="accountPhone" formControlName="accountPhone">
+            <span *ngIf="!accountphone?.valid && (accountphone?.touched || accountphone?.dirty)">
+                <span class="text-danger" *ngIf="accountphone?.errors?.['required']">
+                    Account Phone Number is required
+                </span>
+            </span>
+        </div>
+        <div>
+            <label for="emailAddress">Account Email<span class="text-danger">*</span></label>
+            <input type="text" id="emailAddress" name="emailAddress"
+                formControlName="emailAddress">
+            <span *ngIf="!accountemail?.valid && (accountemail?.touched || accountemail?.dirty)">
+                <span class="text-danger" *ngIf="accountemail?.errors?.['required']">
+                    Account Email is required
+                </span>
+            </span>
+        </div>
+        <div>
+            <label for="accountInvestmentObjective">Account Investment Objective<span class="text-danger">*</span></label>
+            <select id="accountInvestmentObjective" formControlName="accountInvestmentObjective">
+                <option value="">Select</option>
+                <option value="SIMPL">SIMPLE</option>
+                <option value="RETIREMENT">RETIREMENT</option>
+            </select>
+        </div>
+        <div>
+            <label for="accountAlternateContact">Alternate Contact<span class="text-danger">*</span></label>
+            <input id="accountAlternateContact" name="accountAlternateContact" formControlName="accountAlternateContact">
+            <span
+                *ngIf="!accountalternatecontact?.valid && (accountalternatecontact?.touched || accountalternatecontact?.dirty)">
+                <span class="text-danger" *ngIf="accountalternatecontact?.errors?.['required']">
+                    Alternate Contact Number is required
+                </span>
+                <span class="text-danger" *ngIf="accountalternatecontact?.errors?.['maxlength']">
+                    Enter valid Contact Number
+                </span>
+ 
+            </span>
+        </div>
+ 
+        <div>
+            <button type="submit" class="btn btn-primary" [disabled]="!accountForm.valid">Submit</button>
+        </div>
+    </form>
+</div>
+<!-- Footer -->
+<footer>
+    <div class="footer-links">
+      <!-- You can add links here if needed -->
+    </div>
+    <p>&copy; 2024 Charles Schwab & Co., Inc, All rights reserved. Member SIPC. Unauthorized access is prohibited. Usage will be monitored. (0124-3J4J)</p>
+  </footer>
+ 
+<!-- [disabled]="!accountForm.valid" -->
+ 

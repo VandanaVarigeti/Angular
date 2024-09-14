@@ -1,0 +1,89 @@
+        <!-- Header -->
+            <app-nav-bar></app-nav-bar>
+        <!-- Main Content -->
+            <div class="container">
+                <h2>Register</h2>
+                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                    <!-- First Name -->
+                    <div class="form-group">
+                        <label for="firstName">First Name <span class="required">*</span></label>
+                        <input id="firstName" formControlName="firstName" type="text" [readOnly]="isReadOnly" />
+                        <div class="error" *ngIf="registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched">   
+                          First Name is required.
+                        </div>
+                    </div>
+                
+                    <!-- Last Name -->
+                    <div class="form-group">
+                        <label for="lastName">Last Name <span class="required">*</span></label>
+                        <input id="lastName" formControlName="lastName" type="text" [readOnly]="isReadOnly"/>
+                        <div class="error" *ngIf="registerForm.get('lastName')?.invalid && registerForm.get('lastName')?.touched">
+                            Last Name is required.
+                        </div>
+                    </div>
+                
+                    <!-- Email Address -->
+                    <div class="form-group">
+                        <label for="emailAddress">Email Address <span class="required">*</span></label>
+                        <input id="emailAddress" formControlName="emailAddress" type="email" [readOnly]="isReadOnly"/>
+                        <div class="error" *ngIf="registerForm.get('emailAddress')?.invalid && registerForm.get('emailAddress')?.touched">
+                            Valid Email is required.
+                        </div>
+                    </div>
+                
+                    <!-- Username -->
+                    <div class="form-group">
+                        <label for="userName">Username <span class="required">*</span></label>
+                        <input id="userName" formControlName="userName" type="text" />
+                        <div class="error" *ngIf="registerForm.get('userName')?.invalid && registerForm.get('userName')?.touched">
+                            Username is required.
+                        </div>
+                    </div>
+                
+                    <!-- Password -->
+                    <div class="form-group">
+                        <label for="password">Password <span class="required">*</span></label>
+                        <input id="password" formControlName="password" type="password" />
+                        <div class="error" *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+                            Password must be at least 6 characters.
+                        </div>
+                    </div>
+                   <div class="form-group">
+                        <label for="confirmPassword">ConfirmPassword: <span class="required">*</span></label>
+                        <input id="confirmPassword" formControlName="confirmPassword" type="password">
+                        <div class ='error' *ngIf="registerForm.errors?.['mismatch'] && registerForm.get('confirmPassword')?.touched">
+                          Passwords must match.
+                        </div>
+                      </div>
+                      <!-- <div class="form-container">
+                        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                          <div class="form-group">
+                            <label for="question">Select a security question:<span class="required">*</span></label>
+                            <select id="question" formControlName="selectedQuestion">
+                              <option *ngFor="let question of securityQuestions" [value]="question">{{ question }}</option>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label for="answer">Answer:<span class="required">*</span></label>
+                            <input id="answer" type="text" formControlName="answer" />
+                          </div>
+                        </form>
+                      </div> -->
+                
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-success" [disabled]="form.invalid">Register</button>
+                </form>
+            </div>
+        
+        
+        <!-- Footer -->
+        <footer>
+            <div class="footer-links">
+                <!-- Add footer links here if needed -->
+            </div>
+            <p>&copy; 2024 Charles Schwab & Co., Inc, All rights reserved. Member SIPC. Unauthorized access is prohibited. Usage will be monitored. (0124-3J4J)</p>
+        </footer>
+
+
+ 
+ 

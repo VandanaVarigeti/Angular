@@ -1,0 +1,13 @@
+<nav class="navbar">
+  <div class="navbar-brand">
+    <a href="/"> <img src="assets/logo.png" alt="Logo" class="navbar-logo"></a>
+    <!-- CHARLES SCHWAB</a> -->
+  </div>
+  <div class="navbar-links">
+   <!-- <a href="/welcome">Home</a>-->
+    <!-- <a href="/about">About</a>
+    <a href="/contact">Contact</a> -->
+    <button *ngIf="loggedIn" (click)="logoutUser()">Logout</button>
+   <!-- <a *ngIf="!loggedIn" href="">Login</a>-->
+  </div>
+</nav>

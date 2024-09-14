@@ -1,0 +1,164 @@
+<app-nav-bar></app-nav-bar>
+<div class="container">
+    <h2>Enter Personal Information:</h2>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <!-- Personal Information -->
+    <div class="form-group">
+        <label for="ssnNumber">SSN Number <span class="required">*</span></label>
+        <input id="ssnNumber" formControlName="ssnNumber" type="text" />
+        <div class="error" *ngIf="form.get('ssnNumber')?.invalid && form.get('ssnNumber')?.touched">SSN Number is required(Only Alphabets allowed).</div>
+        </div>
+    <div class="form-group">
+    <label for="firstName">First Name <span class="required">*</span></label>
+    <input id="firstName" formControlName="firstName" type="text" />
+    <div class="error" *ngIf="form.get('firstName')?.invalid && form.get('firstName')?.touched">First Name is required(Only Alphabets allowed).</div>
+    </div>
+    <div class="form-group">
+    <label for="middleName">Middle Name <span class="optional">(Optional)</span></label>
+    <input id="middleName" formControlName="middleName" type="text" />
+    </div>
+    <div class="form-group">
+    <label for="lastName">Last Name <span class="required">*</span></label>
+    <input id="lastName" formControlName="lastName" type="text" />
+    <div class="error" *ngIf="form.get('lastName')?.invalid && form.get('lastName')?.touched">Last Name is required(Only Alphabets allowed).</div>
+    </div>
+    <div class="form-group">
+    <label for="title">Title <span class="optional">(Optional)</span></label>
+    <input id="title" formControlName="title" type="text" />
+    </div>
+    <!-- Address Information -->
+    <div formArrayName="addresses">
+    <div *ngFor="let address of addresses.controls; let i = index" [formGroupName]="i" class="address-group">
+    <h3>Address {{ i + 1 }}</h3>
+    <div class="form-group">
+    <label for="addressLine1-{{i}}">Address Line 1 <span *ngIf="i===0" class="required">*</span></label>
+    <input id="addressLine1-{{i}}" formControlName="addressLine1" type="text" />
+    <div class="error" *ngIf="address.get('addressLine1')?.invalid && address.get('addressLine1')?.touched">Address Line 1 is required.</div>
+    </div>
+    <div class="form-group">
+    <label for="addressLine2-{{i}}">Address Line 2 <span *ngIf="i===0" class="required">*</span></label>
+    <input id="addressLine2-{{i}}" formControlName="addressLine2" type="text" />
+    <div class="error" *ngIf="address.get('addressLine2')?.invalid && address.get('addressLine2')?.touched">Address Line 2 is required.</div>
+    </div>
+    <div class="form-group">
+    <label for="city-{{i}}">City <span *ngIf="i===0" class="required">*</span></label>
+    <input id="city-{{i}}" formControlName="city" type="text" />
+    <div class="error" *ngIf="address.get('city')?.invalid && address.get('city')?.touched">City is required.</div>
+    </div>
+    <div class="form-group">
+    <label for="state-{{i}}">State <span *ngIf="i===0" class="required">*</span></label>
+    <select *ngIf="i < 1" id="state-{{i}}" formControlName="state">
+    <option value="" disabled>Select State</option>
+    <option *ngFor="let state of usStates" [value]="state">{{ state }}</option>
+    </select>
+    <input *ngIf="i >= 1" type="text" id="state-{{i}}" formControlName="state"/>
+    <div class="error" *ngIf="address.get('state')?.invalid && address.get('state')?.touched">State is required.</div>
+    </div>
+    <div class="form-group">
+    <label for="country-{{i}}">Country <span *ngIf="i===0" class="required">*</span></label>
+    <input id="country-{{i}}" formControlName="country" type="text" />
+    <!--div class="error" *ngIf="address.get('country')?.invalid && address.get('country')?.touched">Country is required.</div!-->
+    <div *ngIf="addresses.at(0).get('country')?.hasError('nonUsCountryForFirstAddress')&& addresses.at(0).get('country')?.touched" class="error">
+        Country is required ('US' as the country).
+    </div>
+    </div>
+    
+    <div class="form-group">
+    <label for="zipCode-{{i}}">ZIP Code <span *ngIf="i===0" class="required">*</span></label>
+    <input id="zipCode-{{i}}" formControlName="zipCode" type="text" />
+    <div class="error" *ngIf="address.get('zipCode')?.invalid && address.get('zipCode')?.touched">ZIP Code must be a 5-digit number.</div>
+    </div>
+    <div class="form-group">
+    <div *ngIf="address.get('internationalAddress')">
+    <label>
+    <input formControlName="internationalAddress" type="checkbox" />
+        International Address
+        <span *ngIf="i > 1" class="required">*</span>
+    </label>
+    <div class="error" *ngIf="address.get('internationalAddress')?.invalid && address.get('internationalAddress')?.touched">International Address indicator should not be Null  .</div>
+    </div>
+    </div>
+  <!--  <span *ngIf="i === 0 && form.get('addresses')?.hasError('invalidFirstAddress')" class="error">
+        First address must be a valid US address.</span>
+<span *ngIf="i > 0 && form.get('addresses')?.hasError('invalidOtherAddress')">
+        Other addresses must be international.</span>-->
+    <button type="button" class="btn btn-danger" (click)="removeAddress(i)">Remove Address</button>
+    </div>
+    </div>
+    <!-- <button type="button" class="btn btn-primary" (click)="addAddress()"[disabled]="form.get('addresses')?.hasError('maxAddresses')">Add Address</button> -->
+    <button type="button" class="btn btn-primary" (click)="addAddress()"[disabled]="addresses.length >= 3">Add Address</button>
+    <!-- <div *ngIf="form.get('addresses')?.hasError('maxAddresses')" class="error">
+        You can add only up to three Addresses.
+    </div> -->
+    <!-- Phone Numbers -->
+    <!-- <div class="form-group">
+    <label for="phoneNumberType">Phone Number Type <span class="required">*</span></label>
+    <select id="phoneNumberType" formControlName="phoneNumberType">
+    <option value="" disabled>Select Type</option>
+    <option value="mobile">Mobile</option>
+    <option value="landline">Landline</option>
+    </select>
+    <div class="error" *ngIf="form.get('phoneNumberType')?.invalid && form.get('phoneNumberType')?.touched">Phone Number Type is required.</div>
+    </div> -->
+    <div class="form-group">
+    <label for="phoneNumber">Phone Number <span class="required">*</span></label>
+    <input id="phoneNumber" formControlName="phoneNumber" type="text" />
+    <div class="error" *ngIf="form.get('phoneNumber')?.hasError('invalidPhoneNumber') && form.get('phoneNumber')?.touched">Phone Number must be a valid US number.</div>
+    </div>
+    <!-- <div class="form-group">
+    <label for="landlineNumber">Landline Number <span class="optional">(Optional)</span></label>
+    <input id="landlineNumber" formControlName="landlineNumber" type="text" />
+    <div class="error" *ngIf="form.get('landlineNumber')?.hasError('invalidLandlineNumber') && form.get('landlineNumber')?.touched">Landline Number must be an 8-digit number.</div>
+    </div> -->
+    <div class="form-group">
+    <label for="internationalPhoneNumber">International Phone Number <span class="optional">(Optional)</span></label>
+    <input id="internationalPhoneNumber" formControlName="internationalPhoneNumber" type="text" />
+    </div>
+    <!-- Citizenship and Other Information -->
+    <div class="form-group">
+    <label for="emailAddress">Email Address <span class="required">*</span></label>
+    <input id="emailAddress" formControlName="emailAddress" type="email" />
+    <div class="error" *ngIf="form.get('emailAddress')?.invalid && form.get('emailAddress')?.touched">Valid Email Address is required.</div>
+    </div>
+    <div class="form-group">
+    <label for="citizenship1">Citizenship 1 <span class="required">*</span></label>
+    <!--input id="citizenship1" formControlName="citizenship1" type="text" /!-->
+    <input id="citizenship1" formControlName="citizenship1" type="text" class="form-control" value="US" readonly />
+    <div class="error" *ngIf="form.get('citizenship1')?.invalid && form.get('citizenship1')?.touched">Citizenship 1 is required.</div>
+    </div>
+    <div class="form-group">
+    <label for="citizenship2">Citizenship 2 <span class="optional">(Optional)</span></label>
+    <input id="citizenship2" formControlName="citizenship2" type="text" />
+    </div>
+    <div class="form-group">
+    <label for="residentCountry">Resident Country <span class="required">*</span></label>
+    <input id="residentCountry" formControlName="residentCountry" type="text" />
+    <div class="error" *ngIf="form.get('residentCountry')?.hasError('required') && form.get('residentCountry')?.touched">Resident Country is required.</div>
+    <div class="error" *ngIf="!form.get('residentCountry')?.hasError('required') && form.get('residentCountry')?.hasError('restrictedCountry')">Resident Country cannot be Sudan or Iran.</div>
+    </div>
+    <div class="form-group">
+    <label for="politicallyInfluencedPerson">Politically Influenced Person <span class="required">*</span></label>
+    <select id="politicallyInfluencedPerson" formControlName="politicallyInfluencedPerson">
+    <option value="" disabled>Select Option</option>
+    <option value="yes">Yes</option>
+    <option value="no">No</option>
+    </select>
+    <div *ngIf="form.get('politicallyInfluencedPerson')?.invalid && form.get('politicallyInfluencedPerson')?.touched" class="error">Politically Influenced Person is required.</div>
+    </div>
+    <div class="form-group">
+        <label for="financialObjective">Financial Objective <span class="required">*</span></label>
+        <input id="financialObjective" formControlName="financialObjective" type="text" />
+        <div class="error" *ngIf="form.get('financialObjective')?.invalid && form.get('financialObjective')?.touched">Financial Objective is required.</div>
+        </div>
+    <button type="submit" class="btn btn-success">Save & Continue</button>
+    </form>
+    </div>
+      <!-- Footer -->
+  <footer>
+    <div class="footer-links">
+      <!-- You can add links here if needed -->
+    </div>
+    <p>&copy; 2024 Charles Schwab & Co., Inc, All rights reserved. Member SIPC. Unauthorized access is prohibited. Usage will be monitored. (0124-3J4J)</p>
+  </footer>
+ 
+ 

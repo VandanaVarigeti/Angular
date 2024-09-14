@@ -1,0 +1,122 @@
+/* Overall container for the page */
+.welcome-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  background-color:#EDF4F2;
+  font-family: 'Arial', sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+/* Header styling - full width without any spacing */
+header {
+  display: flex;
+  align-items: center; /* Vertically center items */
+  padding: 15px 0;
+  background-color: #31473A;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin: 0;
+  width: 100vw;
+}
+
+/* Adjust header title styling */
+header h1 {
+  font-size: 36px;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+  display: flex;
+  align-items: center; /* Vertically center text with the icon */
+}
+
+/* Icon styling */
+.header-icon {
+  width: 60px; /* Adjust size as needed */
+  height: 60px; /* Adjust size as needed */
+  margin-right: 10px; /* Space between icon and title */
+}
+
+/* Central content area */
+.welcome-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.welcome-content p {
+  font-size: 20px;
+  margin-bottom: 40px;
+  color:#31473A;
+  font-style:Graphik;
+  font-weight: 500;
+}
+
+/* User options (buttons) styling */
+.user-options {
+  display: flex;
+  gap: 30px;
+}
+
+.user-options button {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #31473A;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.user-options button:hover {
+  background-color: #31473A;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer styling - full width without any spacing */
+footer {
+  width: 100vw;
+  padding: 20px 0;
+  background-color: #31473A;
+  text-align: center;
+  color: white;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+  margin: 0;
+  position: relative;
+  left: 0;
+}
+
+.footer-links {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  margin: 0 15px;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+footer p {
+  font-size: 14px;
+  margin: 0;
+}
+.logo {
+  width: 100px; /* Adjust the width as needed */
+  height: auto;
+  margin-right: 20px; /* Adjust the margin as needed */
+}
